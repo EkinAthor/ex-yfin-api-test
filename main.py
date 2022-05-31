@@ -35,12 +35,12 @@ with open(in_table.full_path, mode='rt', encoding='utf-8') as in_file, \
                                 quotechar=csvquo)
     odd_writer.writeheader()
     i = 0
-        for row in reader:
-            if i % 2 == 0:
-                even_writer.writerow(row)
-            else:
-                newRow = {}
-                for key in reader.fieldnames:
-                    newRow[key] = row[key] + ''.join([params['sound']] * params['repeat'])
-                odd_writer.writerow(newRow)
-            i = i + 1
+    for row in reader:
+        if i % 2 == 0:
+            even_writer.writerow(row)
+        else:
+            newRow = {}
+            for key in reader.fieldnames:
+                newRow[key] = row[key] + ''.join([params['sound']] * params['repeat'])
+            odd_writer.writerow(newRow)
+        i = i + 1
